@@ -20,9 +20,7 @@ dark_text_color = '#776E65'
 light_text_color = '#F9F6F2'
 
 #LET'S START
-
 root = tk.Tk() #starts UI part
-# root.iconbitmap('2048.ico')
 root.title('2048')
 
 canvas = tk.Canvas(root, height = HEIGHT, width = WIDTH, bg = bg_color)
@@ -60,7 +58,7 @@ tk_scoreValue.place(x = WIDTH - BIG_PADDING - score_width*2 -10 + 25, y = 45, wi
 frame = tk.Frame(root, bg = board_color, bd = 0, relief = 'solid')
 frame.place(x = BIG_PADDING, y = HEIGHT - SIZE*TILE_SIZE -(SIZE+1)*SMALL_PADDING - BIG_PADDING, width = SIZE*TILE_SIZE + (SIZE+1)*SMALL_PADDING, height = SIZE*TILE_SIZE + (SIZE+1)*SMALL_PADDING)
 
-#create tiles
+#CREATE TILES
 def createTile (a,b):
     tk_tile = tk.Label(frame, font = (FONT, 30, 'bold'), bg = tile_color[0], fg = dark_text_color)
     tk_tile.place(x =  SMALL_PADDING*(a+1) + TILE_SIZE*a, y = SMALL_PADDING*(b+1) + TILE_SIZE*b, width = TILE_SIZE, height = TILE_SIZE)
@@ -80,14 +78,13 @@ def updateTile(a,b,value):
     else:
         tile_dict[a,b]['fg'] = light_text_color
 
-#dictionary of all tiles
-tile_dict = dict()
+tile_dict = dict() #dictionary of all tiles
 
 for a in range (0,SIZE):
     for b in range (0,SIZE):
         tile_dict[(a,b)] = createTile(a,b)
 
-#load best score
+#LOAD BEST  SCORE
 try:
     f = open('BestScore.txt','r')
     best_score = int(f.read())
@@ -95,13 +92,6 @@ try:
     f.close()
 except:
     best_score = 0
-
-#default starting position
-updateTile(0,0,16)
-updateTile(1,0,2)
-updateTile(2,0,2)
-updateTile(0,1,2)
-updateTile(2,2,2)
 
 def getScore():
     sum = 0
@@ -114,8 +104,6 @@ def getScore():
                 pass
 
     return sum
-
-tk_scoreValue['text'] = getScore()
 
 #NEW GAME
 def resetGame():
@@ -144,7 +132,6 @@ tk_game_over = tk.Label(root, font = (FONT, 20, 'bold'), bg = bg_color, fg = 're
 tk_game_over.place(x = BIG_PADDING , y = 110, width = 180, height = 40,)
 
 #GETTING THE GAME READY
-
 def tileIsEmpty(a,b):
     if tile_dict[a,b]['text'] == '':
         return True
@@ -285,7 +272,6 @@ def keyActions(direction):
         spawnRandomTile()
         saveBestScore(game_score)
 
-
 def leftKey(event):
     keyActions('left')
 
@@ -297,6 +283,9 @@ def upKey(event):
 
 def downKey(event):
     keyActions('down')
+
+
+resetGame()
 
 root.bind('<Left>', leftKey)
 root.bind('<Right>', rightKey)
