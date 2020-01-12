@@ -159,13 +159,15 @@ def sumColRows(direction):
                 if tileIsEmpty(a,b) == False:
                     #look if there is a tile with the same value on the right
                     for c in range (a+1, SIZE):
+                        #if there is a tile of the same value, sum
                         if getTileValue(a,b) == getTileValue(c,b):
                             updateTile(a,b,getTileValue(a,b) + getTileValue(c,b))
                             updateTile(c,b,0)
                             break
+                        #if there is a tile with different non-zero value, break
                         elif getTileValue(c,b) != 0:
                             break
-
+                        #if empty, contniue
 
     elif direction == 'right':
         for b in range(0,SIZE):
