@@ -152,18 +152,21 @@ def saveBestScore(game_score):
         f.write(str(game_score))
         f.close()
 
+
 def sumColRows(direction):
     """ Sums columns or rows in one direction """
     if direction == 'left': 
         for b in range(0,SIZE):
-                for a in range(0, SIZE):
-                    if tileIsEmpty(a,b) == False:
-                        #look if there is a tile with the same value on the right
-                        for c in range (a+1, SIZE):
-                            if getTileValue(a,b) == getTileValue(c,b):
-                                updateTile(a,b,getTileValue(a,b) + getTileValue(c,b))
-                                updateTile(c,b,0)
-                                break
+            for a in range(0, SIZE):
+                if tileIsEmpty(a,b) == False:
+                    #look if there is a tile with the same value on the right
+                    for c in range (a+1, SIZE):
+                        if getTileValue(a,b) == getTileValue(c,b):
+                            updateTile(a,b,getTileValue(a,b) + getTileValue(c,b))
+                            updateTile(c,b,0)
+                            break
+                        else:
+                            break
 
     elif direction == 'right':
         for b in range(0,SIZE):
@@ -175,17 +178,23 @@ def sumColRows(direction):
                             updateTile(a,b,getTileValue(a,b) + getTileValue(c,b))
                             updateTile(c,b,0)
                             break
+                        else:
+                            break
+
     elif direction == 'up': 
         for a in range(0,SIZE):
-                for b in range(0, SIZE):
-                    if tileIsEmpty(a,b) == False:
-                        #look if there is a tile with the same value on down
-                        for c in range (b+1, SIZE):
-                            if getTileValue(a,b) == getTileValue(a,c):
-                                updateTile(a,b,getTileValue(a,b) + getTileValue(a,c))
-                                updateTile(a,c,0)
-                                break
+            for b in range(0, SIZE):
+                if tileIsEmpty(a,b) == False:
+                    #look if there is a tile with the same value on down
+                    for c in range (b+1, SIZE):
+                        if getTileValue(a,b) == getTileValue(a,c):
+                            updateTile(a,b,getTileValue(a,b) + getTileValue(a,c))
+                            updateTile(a,c,0)
+                            break
+                        else:
+                            break
 
+                            
     elif direction == 'down':
         for a in range(0,SIZE):
             for b in range(SIZE-1,-1,-1):
@@ -196,7 +205,8 @@ def sumColRows(direction):
                             updateTile(a,b,getTileValue(a,b) + getTileValue(a,c))
                             updateTile(a,c,0)
                             break
-
+                        else:
+                            break
 
 def moveSumTiles(direction):
     """ Sums columns or rows in one direction & moves them in one direction """
