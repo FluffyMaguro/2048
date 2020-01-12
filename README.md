@@ -1,2 +1,2 @@
 # 2048
-Simple code for 2048 game
+I wanted to try to write popular 2048 game, so here it is.
