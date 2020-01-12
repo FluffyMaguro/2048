@@ -65,7 +65,6 @@ def createTile (a,b):
     return tk_tile
 
 def updateTile(a,b,value):
-
     tile_dict[a,b]['bg'] = tile_color[value]
 
     if value != 0:
@@ -247,7 +246,6 @@ def moveSumTiles(direction):
                             updateTile(a,c,0)
                             break
 
-
 def spawnRandomTile():
     global game_over
 
@@ -262,7 +260,6 @@ def spawnRandomTile():
     else:
         choice = random.choice(empty_tiles)
         updateTile(choice[0],choice[1],2)
-
 
 def keyActions(direction):
     if game_over == False:
@@ -283,7 +280,6 @@ def upKey(event):
 
 def downKey(event):
     keyActions('down')
-
 
 resetGame()
 
