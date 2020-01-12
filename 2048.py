@@ -101,7 +101,6 @@ def getScore():
                 sum += int(tile_dict[a,b]['text'])
             except:
                 pass
-
     return sum
 
 #NEW GAME
@@ -152,7 +151,6 @@ def saveBestScore(game_score):
         f.write(str(game_score))
         f.close()
 
-
 def sumColRows(direction):
     """ Sums columns or rows in one direction """
     if direction == 'left': 
@@ -165,8 +163,9 @@ def sumColRows(direction):
                             updateTile(a,b,getTileValue(a,b) + getTileValue(c,b))
                             updateTile(c,b,0)
                             break
-                        else:
+                        elif getTileValue(c,b) != 0:
                             break
+
 
     elif direction == 'right':
         for b in range(0,SIZE):
@@ -178,7 +177,7 @@ def sumColRows(direction):
                             updateTile(a,b,getTileValue(a,b) + getTileValue(c,b))
                             updateTile(c,b,0)
                             break
-                        else:
+                        elif getTileValue(c,b) != 0:
                             break
 
     elif direction == 'up': 
@@ -191,10 +190,9 @@ def sumColRows(direction):
                             updateTile(a,b,getTileValue(a,b) + getTileValue(a,c))
                             updateTile(a,c,0)
                             break
-                        else:
+                        elif getTileValue(a,c) != 0:
                             break
 
-                            
     elif direction == 'down':
         for a in range(0,SIZE):
             for b in range(SIZE-1,-1,-1):
@@ -205,7 +203,7 @@ def sumColRows(direction):
                             updateTile(a,b,getTileValue(a,b) + getTileValue(a,c))
                             updateTile(a,c,0)
                             break
-                        else:
+                        elif getTileValue(a,c) != 0:
                             break
 
 def moveSumTiles(direction):
