@@ -3,4 +3,4 @@ I wanted to try to write popular 2048 game, so here it is. No animations were ad
 
 Screenshot:
 
-![Screenshot](https://github.com/FluffyMaguro/2048/blob/master/screen.png)
+![Screenshot](https://github.com/FluffyMaguro/2048/blob/master/Screenshot.png)
