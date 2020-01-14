@@ -1,6 +1,5 @@
 # 2048
-I wanted to try to write popular 2048 game, so here it is. No animations were added.
 
-Screenshot:
+A simple game of 2048 made with tkinter package.
 
 ![Screenshot](https://github.com/FluffyMaguro/2048/blob/master/Screenshot.png)
